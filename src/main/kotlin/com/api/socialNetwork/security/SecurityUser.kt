@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails
 import java.util.stream.Collectors
 
 class SecurityUser(user: UserAccount) : UserDetails {
-    final val id: Long
+    val id: Long
     private val password: String
     private val email: String
     private val permissions: List<SimpleGrantedAuthority>
@@ -17,7 +17,7 @@ class SecurityUser(user: UserAccount) : UserDetails {
         id = user.userId!!
         email = user.email
         password = user.password
-        permissions = user.permissionList
+        permissions = user.permissionList!!
             .stream()
             .map { (_, permissionName): Permission ->
                 SimpleGrantedAuthority(

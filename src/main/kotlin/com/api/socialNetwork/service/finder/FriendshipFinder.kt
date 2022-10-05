@@ -2,6 +2,6 @@ package com.api.socialNetwork.service.finder
 
 import com.api.socialNetwork.model.Friendship
 
-interface FriendshipFinderById {
+interface FriendshipFinder {
     fun findByIdWithException(id:Long): Friendship
 }
