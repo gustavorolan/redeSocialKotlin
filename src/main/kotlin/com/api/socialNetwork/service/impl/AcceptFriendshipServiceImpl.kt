@@ -6,7 +6,6 @@ import com.api.socialNetwork.repository.UserAccountRepository
 import com.api.socialNetwork.security.FindUserAuthenticatedService
 import com.api.socialNetwork.service.finder.FriendshipFinder
 import com.api.socialNetwork.service.finder.UserAccountFinder
-import com.api.socialNetwork.service.verifier.AcceptFriendshipVerifier.AcceptFriendshipVerifier
 import com.api.socialNetwork.service.verifier.VerifierExecutor
 import javax.validation.Valid
 
@@ -14,12 +13,11 @@ class AcceptFriendshipServiceImpl(
     private var friendshipFinder: FriendshipFinder,
     private val friendshipRepository: FriendshipRepository,
     private val userAccountRepository: UserAccountRepository,
-    private val acceptFriendshipVerifier: List<AcceptFriendshipVerifier>,
     private val verifierExecutor: VerifierExecutor,
     private val findUserAuthenticatedService: FindUserAuthenticatedService,
     private val userAccountFinderById: UserAccountFinder,
 )  {
     fun accept(request: @Valid AcceptFriendshipRequest) {
-        verifierExecutor.verify(acceptFriendshipVerifier,request)
+
     }
 }

@@ -37,7 +37,7 @@ class PostListMapper(private val userResponseMapper: UserResponseMapper) {
             comments = post.comments!!,
             userAccountResponseList = userAccountResponseList,
             userAccountResponse = null,
-        );
+        )
     }
 
     private fun userAccountResponses(post: Post): List<UserAccountResponse> {

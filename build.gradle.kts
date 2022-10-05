@@ -29,6 +29,7 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+	runtimeOnly("org.jetbrains.kotlin:kotlin-reflect:1.7.20")
 }
 
 tasks.withType<KotlinCompile> {
