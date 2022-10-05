@@ -1,6 +1,6 @@
 package com.api.socialNetwork.controller
 
-import com.api.socialNetwork.dtos.request.AcceptFriendshipRequest
+import com.api.socialNetwork.controller.dtos.request.AcceptFriendshipRequest
 import com.api.socialNetwork.service.AcceptFriendshipService
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody

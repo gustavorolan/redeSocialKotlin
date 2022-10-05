@@ -1,8 +1,8 @@
 package com.api.socialNetwork.mapper
 
-import com.api.socialNetwork.dtos.response.PostResponse
-import com.api.socialNetwork.dtos.response.PostWithUserResponse
-import com.api.socialNetwork.dtos.response.UserAccountResponse
+import com.api.socialNetwork.controller.dtos.response.PostResponse
+import com.api.socialNetwork.controller.dtos.response.PostWithUserResponse
+import com.api.socialNetwork.controller.dtos.response.UserAccountResponse
 import com.api.socialNetwork.model.Post
 import org.springframework.stereotype.Component
 

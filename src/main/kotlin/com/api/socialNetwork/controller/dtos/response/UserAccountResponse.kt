@@ -1,4 +1,4 @@
-package com.api.socialNetwork.dtos.response
+package com.api.socialNetwork.controller.dtos.response
 
 data class UserAccountResponse(
     val userId: Long,

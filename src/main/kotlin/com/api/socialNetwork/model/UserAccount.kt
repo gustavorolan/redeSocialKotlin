@@ -1,10 +1,10 @@
 package com.api.socialNetwork.model
 
-import com.api.socialNetwork.dtos.request.CreateNewUserRequest
+import com.api.socialNetwork.controller.dtos.request.CreateNewUserRequest
 import com.fasterxml.jackson.annotation.JsonIgnore
-import org.hibernate.Hibernate
 import javax.persistence.*
 
+@Suppress("com.haulmont.jpb.DataClassEqualsAndHashCodeInspection")
 @Entity
 data class  UserAccount(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,51 +23,37 @@ data class  UserAccount(
     val password: String,
 
     @Column
-    val profileImg: String ?= "",
+    val profileImg: String? = "",
 
     @JsonIgnore
     @ManyToMany(mappedBy = "userAccountList", cascade = [CascadeType.ALL])
-    val postList: List<Post> ?= ArrayList(),
+    val postList: List<Post>? = listOf(),
 
     @OneToMany(mappedBy = "userAccount")
     @JsonIgnore
-    val likePostList: List<LikePost>? = ArrayList(),
+    val likePostList: List<LikePost>? = listOf(),
 
     @OneToMany(mappedBy = "userAccount")
     @JsonIgnore
-    val commentList: List<Comment> ?= ArrayList(),
+    val commentList: List<Comment>? = listOf(),
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "userIdPermission")
-    val permissionList: List<Permission> ?= ArrayList(),
+    val permissionList: List<Permission>? = listOf(),
 
     @OneToMany(mappedBy = "userAccount")
-    val notificationList: List<Notification>? = ArrayList()
+    val notificationList: List<Notification>? = listOf()
 ) {
-    constructor(request:CreateNewUserRequest) :
+    constructor(request: CreateNewUserRequest) :
             this( userId = null,
                 username = request.username,
                 nickname = request.nickname,
                 email = request.email,
                 password = request.password,
-                profileImg = null,
-                postList = null,
-                likePostList = null,
-                commentList = null,
-                permissionList = null)
+                profileImg = "",
+                postList = listOf(),
+                likePostList = listOf(),
+                commentList = listOf(),
+                permissionList = listOf())
 
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
-        other as UserAccount
-
-        return userId != null && userId == other.userId
-    }
-
-    override fun hashCode(): Int = javaClass.hashCode()
-
-    @Override
-    override fun toString(): String {
-        return this::class.simpleName + "(userId = $userId )"
-    }
 }

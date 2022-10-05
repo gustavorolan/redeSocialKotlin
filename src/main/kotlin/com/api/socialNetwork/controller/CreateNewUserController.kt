@@ -1,6 +1,6 @@
 package com.api.socialNetwork.controller
 
-import com.api.socialNetwork.dtos.request.CreateNewUserRequest
+import com.api.socialNetwork.controller.dtos.request.CreateNewUserRequest
 import com.api.socialNetwork.service.CreateNewUserService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping

@@ -1,7 +1,7 @@
 package com.api.socialNetwork.service.verifier.createNewUserVerifier.impl
 
-import com.api.socialNetwork.dtos.request.CreateNewUserRequest
-import com.api.socialNetwork.exception.NotAllowedEmailException
+import com.api.socialNetwork.controller.dtos.request.CreateNewUserRequest
+import com.api.socialNetwork.exception.EmailNotAllowedException
 import com.api.socialNetwork.service.verifier.createNewUserVerifier.CreateNewUserVerifier
 import org.springframework.stereotype.Component
 import java.util.regex.Pattern
@@ -15,7 +15,7 @@ class EmailAllowedVerifierImpl : CreateNewUserVerifier {
         )
         val matcher = patternEmail.matcher(requestMap.email)
         if (!matcher.find()) {
-            throw NotAllowedEmailException()
+            throw EmailNotAllowedException()
         }
     }
 }

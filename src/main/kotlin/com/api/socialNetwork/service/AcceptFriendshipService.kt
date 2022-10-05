@@ -1,6 +1,6 @@
 package com.api.socialNetwork.service
 
-import com.api.socialNetwork.dtos.request.AcceptFriendshipRequest
+import com.api.socialNetwork.controller.dtos.request.AcceptFriendshipRequest
 import javax.validation.Valid
 
 interface AcceptFriendshipService {

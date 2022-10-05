@@ -1,8 +1,8 @@
 package com.api.socialNetwork.model
 
-import org.hibernate.Hibernate
 import javax.persistence.*
 
+@Suppress("com.haulmont.jpb.DataClassEqualsAndHashCodeInspection")
 @Entity
 data class Friendship(
     @Id
@@ -20,19 +20,4 @@ data class Friendship(
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     val relation: Relation
-) {
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
-        other as Friendship
-
-        return friendshipId != null && friendshipId == other.friendshipId
-    }
-
-    override fun hashCode(): Int = javaClass.hashCode()
-
-    @Override
-    override fun toString(): String {
-        return this::class.simpleName + "(friendshipId = $friendshipId )"
-    }
-}
+)

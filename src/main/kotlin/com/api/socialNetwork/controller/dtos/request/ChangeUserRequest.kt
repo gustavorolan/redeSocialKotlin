@@ -1,4 +1,4 @@
-package com.api.socialNetwork.dtos.request
+package com.api.socialNetwork.controller.dtos.request
 
 data class ChangeUserRequest(
     val userName: String? = "",

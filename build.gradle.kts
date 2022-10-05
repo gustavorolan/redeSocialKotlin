@@ -30,6 +30,9 @@ dependencies {
 	testImplementation("org.springframework.security:spring-security-test")
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	runtimeOnly("org.jetbrains.kotlin:kotlin-reflect:1.7.20")
+	testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.0")
 }
 
 tasks.withType<KotlinCompile> {
