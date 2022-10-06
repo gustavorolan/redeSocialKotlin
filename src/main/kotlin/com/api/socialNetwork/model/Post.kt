@@ -16,15 +16,15 @@ data class Post(
         joinColumns = [JoinColumn(name = "postId")],
         inverseJoinColumns = [JoinColumn(name = "userId")]
     )
-    val userAccountList: List<UserAccount>? = ArrayList(),
+    val userAccountList: MutableList<UserAccount> = mutableListOf(),
 
     @OneToMany(mappedBy = "postCommented")
     @JsonIgnore
-    val commentList: List<Comment>? = ArrayList(),
+    val commentList: MutableList<Comment> = mutableListOf(),
 
     @OneToMany(mappedBy = "postLiked")
     @JsonIgnore
-    val likePostList: List<LikePost> = ArrayList(),
+    val likePostList: MutableList<LikePost> = mutableListOf(),
 
     @Column(nullable = false)
     val privatePost: Boolean = false,
@@ -39,5 +39,5 @@ data class Post(
 
     val likes: Int? = 0,
 
-    val comments: Int? = 0,
+    val comments: Int = commentList.size,
 )

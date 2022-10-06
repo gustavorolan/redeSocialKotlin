@@ -16,4 +16,6 @@ data class Notification(
 
     @Column(nullable = false)
     val notification: String
-)
+){
+    constructor(userAccount: UserAccount,notification: String):this(null,userAccount, notification)
+}

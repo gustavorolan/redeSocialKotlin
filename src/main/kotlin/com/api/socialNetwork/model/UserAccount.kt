@@ -27,22 +27,22 @@ data class  UserAccount(
 
     @JsonIgnore
     @ManyToMany(mappedBy = "userAccountList", cascade = [CascadeType.ALL])
-    val postList: List<Post>? = listOf(),
+    val postList: MutableList<Post> = mutableListOf(),
 
     @OneToMany(mappedBy = "userAccount")
     @JsonIgnore
-    val likePostList: List<LikePost>? = listOf(),
+    val likePostList: MutableList<LikePost> = mutableListOf(),
 
     @OneToMany(mappedBy = "userAccount")
     @JsonIgnore
-    val commentList: List<Comment>? = listOf(),
+    val commentList: MutableList<Comment> = mutableListOf(),
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "userIdPermission")
-    val permissionList: List<Permission>? = listOf(),
+    val permissionList: MutableList<Permission> = mutableListOf(),
 
     @OneToMany(mappedBy = "userAccount")
-    val notificationList: List<Notification>? = listOf()
+    val notificationList: MutableList<Notification> = mutableListOf()
 ) {
     constructor(request: CreateNewUserRequest) :
             this( userId = null,
@@ -51,9 +51,9 @@ data class  UserAccount(
                 email = request.email,
                 password = request.password,
                 profileImg = "",
-                postList = listOf(),
-                likePostList = listOf(),
-                commentList = listOf(),
-                permissionList = listOf())
+                postList = mutableListOf(),
+                likePostList = mutableListOf(),
+                commentList = mutableListOf(),
+                permissionList = mutableListOf())
 
 }

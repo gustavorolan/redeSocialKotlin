@@ -18,4 +18,15 @@ data class Comment (
 
     @Column(nullable = false)
     val commentText: String? = ""
-)
+){
+    constructor(
+        userAccount: UserAccount,
+        postCommented: Post,
+        commentText: String
+    ):this(
+        null,
+        userAccount,
+        postCommented,
+        commentText
+    )
+}
