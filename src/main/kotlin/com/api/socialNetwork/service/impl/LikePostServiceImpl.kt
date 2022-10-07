@@ -6,15 +6,17 @@ import com.api.socialNetwork.model.Post
 import com.api.socialNetwork.repository.LikePostRepository
 import com.api.socialNetwork.repository.PostRepository
 import com.api.socialNetwork.security.FindUserAuthenticatedService
-import com.api.socialNetwork.service.LikeAPostService
+import com.api.socialNetwork.service.LikePostService
 import com.api.socialNetwork.service.finder.impl.PostFinderByIdImpl
+import org.springframework.stereotype.Service
 
+@Service
 class LikePostServiceImpl(
     private val postFinderByIdImpl: PostFinderByIdImpl,
     private val findUserAuthenticatedService: FindUserAuthenticatedService,
     private val postRepository: PostRepository,
     private val likePostRepository: LikePostRepository
-) : LikeAPostService {
+) : LikePostService {
     override fun like(request: LikePostRequest): String {
         val post = postFinderByIdImpl.findByIdWithException(request.idPost) as Post
         val user = findUserAuthenticatedService.user
