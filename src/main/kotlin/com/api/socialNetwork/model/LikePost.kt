@@ -15,4 +15,13 @@ data class LikePost(
     @ManyToOne(cascade = [CascadeType.PERSIST])
     @JoinColumn(name = "postId")
     val postLiked: Post,
-)
+){
+    constructor(
+        userAccount: UserAccount,
+        postLiked: Post
+    ):this(
+       likeId = null,
+       userAccount =  userAccount,
+       postLiked =  postLiked
+    )
+}

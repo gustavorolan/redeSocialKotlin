@@ -6,10 +6,7 @@ import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository
 
 @Repository
-interface LikeRepository : JpaRepository<LikePost, Long> {
-    @Query("select l from LikePost l where l.postLiked.postId=?1 and l.userAccount.userId=?2")
-    fun filterByPostId(postID: Long?, user: Long?): List<LikePost>
-
+interface LikePostRepository : JpaRepository<LikePost, Long> {
     @Query("select l from LikePost l where l.postLiked.postId=?1")
-    fun filterAllLikesOfPostId(postID: Long?): List<LikePost>
+    fun filterAllLikesOfPostId(postID: Long): List<LikePost>
 }
