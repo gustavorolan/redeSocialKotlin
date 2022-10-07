@@ -30,14 +30,34 @@ data class Post(
     val privatePost: Boolean = false,
 
     @Column(nullable = false)
-    val postText: String? = "",
+    val postText: String = "",
 
-    val postImg: String? = "",
+    val postImg: String ?= "",
 
     @Column(nullable = false)
-    val dateTime: LocalDateTime? = LocalDateTime.now(),
+    val dateTime: LocalDateTime = LocalDateTime.now(),
 
-    val likes: Int? = 0,
+    var likes: Int = 0,
 
-    val comments: Int = commentList.size,
-)
+    var comments: Int = 0,
+){
+    constructor(
+        userAccount: UserAccount,
+        privatePost: Boolean,
+        postText: String,
+        postImg: String,
+        dateTime: LocalDateTime,
+
+    ):this(
+        postId = null,
+       userAccountList = mutableListOf(userAccount),
+       commentList =  mutableListOf(),
+       likePostList = mutableListOf(),
+       privatePost = privatePost,
+        postText= postText,
+        postImg = postImg,
+        dateTime=dateTime,
+        0,
+        0
+    )
+}

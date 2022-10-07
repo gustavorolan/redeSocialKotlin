@@ -17,10 +17,14 @@ class CreateNewUserServiceImpl(
     private val createNewUserVerifierList: List<CreateNewUserVerifier>
 ) : CreateNewUserService {
     override fun create(request: CreateNewUserRequest): String {
+
         verifierExecutor.verify(createNewUserVerifierList,request)
+
         request.password = passwordEncoder.encode(request.password)
+
         val userAccount = UserAccount(request)
         userAccountRepository.save(userAccount)
+
         return userAccount.username
     }
 }

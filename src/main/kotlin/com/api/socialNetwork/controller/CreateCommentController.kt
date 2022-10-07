@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 import javax.validation.Valid
 
 @RestController
-@RequestMapping("/post/comment/create")
+@RequestMapping("/post/comment")
 class CreateCommentController(
     private val createNewCommentService: CreateNewCommentService
 ) {

@@ -14,10 +14,9 @@ class UserAccountFactory {
                 email = "user@email.com",
                 password = "12345678",
                 profileImg = String(),
-                postList = listOf(),
-                likePostList = listOf(),
-                permissionList = listOf(),
-                notificationList = listOf()
+                postList = mutableListOf(),
+                likePostList = mutableListOf(),
+                permissionList = mutableListOf()
             )
 
         fun getCreateNewUserRequest(): CreateNewUserRequest =

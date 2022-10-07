@@ -17,7 +17,7 @@ class SecurityUser(user: UserAccount) : UserDetails {
         id = user.userId!!
         email = user.email
         password = user.password
-        permissions = user.permissionList!!
+        permissions = user.permissionList
             .stream()
             .map { (_, permissionName): Permission ->
                 SimpleGrantedAuthority(

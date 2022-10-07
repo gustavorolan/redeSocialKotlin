@@ -16,11 +16,11 @@ class PostListMapper(private val userResponseMapper: UserResponseMapper) {
         return PostResponse(
             postId = post.postId!!,
             userAccountResponse = userAccountResponseList,
-            postText = post.postText!!,
+            postText = post.postText,
             postImg = post.postImg!!,
-            likes = post.likes!!,
-            dateTime = post.dateTime!!,
-            comments = post.comments!!,
+            likes = post.likes,
+            dateTime = post.dateTime,
+            comments = post.comments,
         )
     }
 
@@ -30,18 +30,18 @@ class PostListMapper(private val userResponseMapper: UserResponseMapper) {
 
         return PostWithUserResponse(
             postId = post.postId!!,
-            postText = post.postText!!,
+            postText = post.postText,
             postImg = post.postImg!!,
-            likes = post.likes!!,
-            dateTime = post.dateTime!!,
-            comments = post.comments!!,
+            likes = post.likes,
+            dateTime = post.dateTime,
+            comments = post.comments,
             userAccountResponseList = userAccountResponseList,
             userAccountResponse = null,
         )
     }
 
     private fun userAccountResponses(post: Post): List<UserAccountResponse> {
-        return post.userAccountList!!
+        return post.userAccountList
             .map { userAccount -> userResponseMapper.toResponse(userAccount) }
     }
 }

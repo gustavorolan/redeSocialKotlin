@@ -40,9 +40,6 @@ data class  UserAccount(
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "userIdPermission")
     val permissionList: MutableList<Permission> = mutableListOf(),
-
-    @OneToMany(mappedBy = "userAccount")
-    val notificationList: MutableList<Notification> = mutableListOf()
 ) {
     constructor(request: CreateNewUserRequest) :
             this( userId = null,
