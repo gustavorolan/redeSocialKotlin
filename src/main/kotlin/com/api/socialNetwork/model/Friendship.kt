@@ -20,4 +20,15 @@ data class Friendship(
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     val relation: Relation
-)
+){
+    constructor(
+        userAccount: UserAccount,
+        userFriendShip: UserAccount,
+        relation: Relation
+    ) :this(
+        friendshipId = null,
+        userAccount = userAccount,
+        userFriendShip = userFriendShip,
+        relation = relation
+    )
+}

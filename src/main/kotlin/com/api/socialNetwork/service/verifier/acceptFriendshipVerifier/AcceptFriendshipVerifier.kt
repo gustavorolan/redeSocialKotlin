@@ -1,4 +1,4 @@
-package com.api.socialNetwork.service.verifier.AcceptFriendshipVerifier
+package com.api.socialNetwork.service.verifier.acceptFriendshipVerifier
 
 import com.api.socialNetwork.service.verifier.Verifier
 

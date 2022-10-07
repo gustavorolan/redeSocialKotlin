@@ -1,8 +1,8 @@
-package com.api.socialNetwork.service.verifier.AcceptFriendshipVerifier.impl
+package com.api.socialNetwork.service.verifier.acceptFriendshipVerifier.impl
 
 import com.api.socialNetwork.controller.dtos.request.AcceptFriendshipRequest
 import com.api.socialNetwork.security.FindUserAuthenticatedService
-import com.api.socialNetwork.service.verifier.AcceptFriendshipVerifier.AcceptFriendshipVerifier
+import com.api.socialNetwork.service.verifier.acceptFriendshipVerifier.AcceptFriendshipVerifier
 import org.springframework.stereotype.Component
 
 @Component

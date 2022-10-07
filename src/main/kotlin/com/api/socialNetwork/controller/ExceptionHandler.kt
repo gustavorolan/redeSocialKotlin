@@ -1,5 +1,6 @@
 package com.api.socialNetwork.controller
 
+import com.api.socialNetwork.exception.AddingItselfException
 import com.api.socialNetwork.exception.EmailNotAllowedException
 import com.api.socialNetwork.exception.FriendshipNotFoundedException
 import com.api.socialNetwork.exception.UserAccountNotFoundedException
@@ -21,6 +22,7 @@ class ExceptionHandler {
 
     @ExceptionHandler(
         EmailNotAllowedException::class,
+        AddingItselfException::class
     )
     fun badRequestHandler(exception: RuntimeException): ResponseEntity<String> {
         return ResponseEntity<String>(exception.message, HttpStatus.BAD_REQUEST)
