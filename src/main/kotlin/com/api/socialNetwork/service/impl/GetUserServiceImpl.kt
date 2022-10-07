@@ -1,4 +1,4 @@
-package com.api.socialNetwork.service.finder.impl
+package com.api.socialNetwork.service.impl
 
 import com.api.socialNetwork.controller.dtos.response.UserAccountResponse
 import com.api.socialNetwork.mapper.UserResponseMapper

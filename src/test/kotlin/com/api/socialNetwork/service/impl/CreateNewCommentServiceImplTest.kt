@@ -55,5 +55,11 @@ internal class CreateNewCommentServiceImplTest {
         Assertions.assertEquals(expectedCommentsQuantity,post.comments)
         Assertions.assertEquals(expectedCommentsQuantity,post.commentList.size)
         Assertions.assertEquals(expectedCommentString,post.commentList[0].commentText)
+
+        Mockito.verifyNoMoreInteractions(
+            findUserAuthenticatedService,
+            postFinderByIdImp,
+            commentRepository
+        )
     }
 }
