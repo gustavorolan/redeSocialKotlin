@@ -23,7 +23,16 @@ interface FriendshipRepository : JpaRepository<Friendship, Long> {
                 "or(f.userAccount.userId=?2 " +
                 "and f.userFriendShip.userId=?1))")
     )
-    fun filterFriendsByUserToUndoFriendship(userId: Long, userToUndo: Long): List<Friendship>
+    fun filterFriendsByUsersId(userId: Long, userToUndo: Long): List<Friendship>
+
+    @Query(
+        ("select f from Friendship f where " +
+                "((f.userAccount.userId=?1 " +
+                "and f.userFriendShip.userId=?2)" +
+                "or(f.userAccount.userId=?2 " +
+                "and f.userFriendShip.userId=?1))")
+    )
+    fun findFirstFriendshipByUsersIdList(userId: Long, userToUndo: Long): Friendship
 
     @Query(
         ("select f from Friendship f where" +

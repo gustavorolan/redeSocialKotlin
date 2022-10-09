@@ -19,7 +19,7 @@ data class Friendship(
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    val relation: Relation
+    var relation: Relation
 ){
     constructor(
         userAccount: UserAccount,

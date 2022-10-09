@@ -25,7 +25,7 @@ class RequestFriendshipServiceImpl(
         val friendToAdd = userAccountFinderByIdImpl.findByIdWithException(request.friendId) as UserAccount
         val user = findUserAuthenticatedService.user
 
-        val friendship = Friendship(user, friendToAdd, Relation.FRIENDS)
+        val friendship = Friendship(user, friendToAdd, Relation.NOT_FRIENDS)
 
         friendshipRepository.save(friendship)
     }

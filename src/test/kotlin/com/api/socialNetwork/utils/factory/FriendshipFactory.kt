@@ -1,5 +1,6 @@
 package com.api.socialNetwork.utils.factory
 
+import com.api.socialNetwork.controller.dtos.request.AcceptFriendshipRequest
 import com.api.socialNetwork.controller.dtos.request.RequestFriendshipRequest
 import com.api.socialNetwork.model.Friendship
 import com.api.socialNetwork.model.Relation
@@ -12,12 +13,17 @@ class FriendshipFactory {
             Friendship(
                 userAccount = userAccount,
                  userFriendShip = friend,
-                relation = Relation.FRIENDS
+                relation = Relation.NOT_FRIENDS
             )
 
         fun getFriendShipRequest(): RequestFriendshipRequest =
             RequestFriendshipRequest(
                friendId = 1L
+            )
+
+        fun getAcceptFriendShipRequest(id:Long): AcceptFriendshipRequest =
+            AcceptFriendshipRequest(
+                friendId = id
             )
 
     }

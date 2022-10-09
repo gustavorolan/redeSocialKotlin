@@ -1,9 +1,6 @@
 package com.api.socialNetwork.controller
 
-import com.api.socialNetwork.exception.AddingItselfException
-import com.api.socialNetwork.exception.EmailNotAllowedException
-import com.api.socialNetwork.exception.FriendshipNotFoundedException
-import com.api.socialNetwork.exception.UserAccountNotFoundedException
+import com.api.socialNetwork.exception.*
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
@@ -22,7 +19,8 @@ class ExceptionHandler {
 
     @ExceptionHandler(
         EmailNotAllowedException::class,
-        AddingItselfException::class
+        AddingItselfException::class,
+        UserLoggedCanAcceptFriendshipException::class
     )
     fun badRequestHandler(exception: RuntimeException): ResponseEntity<String> {
         return ResponseEntity<String>(exception.message, HttpStatus.BAD_REQUEST)

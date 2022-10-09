@@ -4,6 +4,7 @@ import com.api.socialNetwork.controller.dtos.request.CreateNewUserRequest
 import com.api.socialNetwork.exception.EmailNotAllowedException
 import com.api.socialNetwork.service.verifier.createNewUserVerifier.CreateNewUserVerifier
 import org.springframework.stereotype.Component
+import org.springframework.stereotype.Service
 import java.util.regex.Pattern
 
 @Component
