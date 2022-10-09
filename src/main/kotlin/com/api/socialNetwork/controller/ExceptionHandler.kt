@@ -20,7 +20,9 @@ class ExceptionHandler {
     @ExceptionHandler(
         EmailNotAllowedException::class,
         AddingItselfException::class,
-        UserLoggedCanAcceptFriendshipException::class
+        UserLoggedCanAcceptFriendshipException::class,
+        AlreadyInGameException::class,
+        MaxPlayersLimitException::class
     )
     fun badRequestHandler(exception: RuntimeException): ResponseEntity<String> {
         return ResponseEntity<String>(exception.message, HttpStatus.BAD_REQUEST)

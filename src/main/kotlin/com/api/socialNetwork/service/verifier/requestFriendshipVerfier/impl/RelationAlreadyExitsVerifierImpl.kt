@@ -5,9 +5,9 @@ import com.api.socialNetwork.exception.RelationAlreadyExistisException
 import com.api.socialNetwork.repository.FriendshipRepository
 import com.api.socialNetwork.security.FindUserAuthenticatedService
 import com.api.socialNetwork.service.verifier.requestFriendshipVerfier.RequestFriendshipVerifier
-import org.springframework.stereotype.Component
+import org.springframework.stereotype.Service
 
-@Component
+@Service
 class RelationAlreadyExitsVerifierImpl(
     private val findUserAuthenticatedService: FindUserAuthenticatedService,
     private val friendshipRepository: FriendshipRepository

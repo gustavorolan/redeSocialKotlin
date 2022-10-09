@@ -16,7 +16,6 @@ class RequestFriendshipController (
         ) {
     @PostMapping
     fun requestFriendship(@RequestBody request: @Valid RequestFriendshipRequest): ResponseEntity<String> {
-
         requestFriendshipService.request(request)
         return ResponseEntity.ok("You invited as friend")
     }

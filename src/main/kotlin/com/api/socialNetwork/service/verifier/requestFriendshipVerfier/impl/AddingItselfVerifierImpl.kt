@@ -4,9 +4,9 @@ import com.api.socialNetwork.controller.dtos.request.RequestFriendshipRequest
 import com.api.socialNetwork.exception.AddingItselfException
 import com.api.socialNetwork.security.FindUserAuthenticatedService
 import com.api.socialNetwork.service.verifier.requestFriendshipVerfier.RequestFriendshipVerifier
-import org.springframework.stereotype.Component
+import org.springframework.stereotype.Service
 
-@Component
+@Service
 class AddingItselfVerifierImpl(
     private val findUserAuthenticatedService: FindUserAuthenticatedService
 ) : RequestFriendshipVerifier {

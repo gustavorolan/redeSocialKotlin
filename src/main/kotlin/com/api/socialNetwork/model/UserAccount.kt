@@ -11,10 +11,10 @@ data class  UserAccount(
     var userId: Long? = null,
 
     @Column(nullable = false)
-    val username: String,
+    var username: String,
 
     @Column(nullable = false, unique = true)
-    val nickname: String,
+    var nickname: String,
 
     @Column(nullable = false, unique = true)
     val email: String,
@@ -23,7 +23,7 @@ data class  UserAccount(
     val password: String,
 
     @Column
-    val profileImg: String? = "",
+    var profileImg: String? = "",
 
     @JsonIgnore
     @ManyToMany(mappedBy = "userAccountList", cascade = [CascadeType.ALL])
