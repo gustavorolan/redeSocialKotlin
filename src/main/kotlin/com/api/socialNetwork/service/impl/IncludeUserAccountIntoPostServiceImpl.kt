@@ -7,7 +7,9 @@ import com.api.socialNetwork.security.FindUserAuthenticatedService
 import com.api.socialNetwork.service.IncludeUserAccountIntoPostService
 import com.api.socialNetwork.service.finder.impl.PostFinderByIdImpl
 import com.api.socialNetwork.service.validator.IncludeUserAccountIntoPostValidation.IncludeUserAccountIntoPostValidation
+import org.springframework.stereotype.Service
 
+@Service
 class IncludeUserAccountIntoPostServiceImpl(
     private val findUserAuthenticatedService: FindUserAuthenticatedService,
     private val postFinderByIdImpl: PostFinderByIdImpl,

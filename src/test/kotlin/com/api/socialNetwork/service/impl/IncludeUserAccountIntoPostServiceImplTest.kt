@@ -57,10 +57,10 @@ internal class IncludeUserAccountIntoPostServiceImplTest {
         Mockito.verify(includeUserAccountIntoPostValidationList).validate(post)
         Mockito.verify(postRepository).save(captor.capture())
 
-        post.userAccountList.map {
-            Assertions.assertEquals(expected[post.userAccountList.indexOf(it)],   it.userId)
-        }
+        val idList = captor.value.userAccountList.map { it.userId }
 
+        Assertions.assertEquals(expected,idList)
+        Assertions.assertTrue(userToInclude.postList.contains(post))
         Assertions.assertTrue(post.userAccountList.contains(userToInclude))
     }
 }

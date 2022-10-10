@@ -5,7 +5,9 @@ import com.api.socialNetwork.model.UserAccount
 import com.api.socialNetwork.repository.UserAccountRepository
 import com.api.socialNetwork.security.FindUserAuthenticatedService
 import com.api.socialNetwork.service.ChangeUserService
+import org.springframework.stereotype.Service
 
+@Service
 class ChangeUserServiceImpl(
     private val findUserAuthenticatedService: FindUserAuthenticatedService,
     private val userAccountRepository: UserAccountRepository
