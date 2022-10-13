@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 import java.time.LocalDateTime
 import javax.persistence.*
 
+
 @Suppress("com.haulmont.jpb.DataClassEqualsAndHashCodeInspection")
 @Entity
 data class Post(
@@ -60,4 +61,9 @@ data class Post(
         0,
         0
     )
+
+    @Override
+    override fun toString(): String {
+        return this::class.simpleName + "(postId = $postId , privatePost = $privatePost , postText = $postText , postImg = $postImg , dateTime = $dateTime , likes = $likes , comments = $comments )"
+    }
 }

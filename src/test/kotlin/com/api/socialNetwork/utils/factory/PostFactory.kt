@@ -16,6 +16,21 @@ class PostFactory {
                 dateTime = dateTime
             )
 
+        fun getPost(userAccount: UserAccount, id:Long): Post {
+            val post = Post(
+                userAccount = userAccount,
+                privatePost = false,
+                postText = "Post",
+                postImg = "",
+                dateTime = DateTimeFactory.getDateTime()
+            )
+
+            post.postId=id
+
+            return post
+        }
+
+
         fun getCreateNewPostRequest(): CreateNewPostRequest =
             CreateNewPostRequest(
                 postText = "Post",
