@@ -46,5 +46,11 @@ internal class UndoFriendshipServiceImplTest {
         Mockito.verify(friendshipRepository).save(captor.capture())
 
         Assertions.assertEquals(expected,captor.value.relation)
+
+        Mockito.verifyNoMoreInteractions(
+            userAccountFinderByIdImpl,
+            findUserAuthenticatedService,
+            friendshipRepository,
+        )
     }
 }

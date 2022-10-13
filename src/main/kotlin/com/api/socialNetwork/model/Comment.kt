@@ -17,7 +17,7 @@ data class Comment (
     val postCommented: Post,
 
     @Column(nullable = false)
-    val commentText: String? = ""
+    val commentText: String = ""
 ){
     constructor(
         userAccount: UserAccount,

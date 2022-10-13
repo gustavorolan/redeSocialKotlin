@@ -4,7 +4,7 @@ import com.api.socialNetwork.controller.dtos.request.CreateNewCommentRequest
 import com.api.socialNetwork.model.Comment
 import com.api.socialNetwork.model.Post
 import com.api.socialNetwork.model.UserAccount
-import com.api.socialNetwork.repository.CommentRepositoryInterface
+import com.api.socialNetwork.repository.CommentRepository
 import com.api.socialNetwork.security.FindUserAuthenticatedService
 import com.api.socialNetwork.service.CreateNewCommentService
 import com.api.socialNetwork.service.finder.impl.PostFinderByIdImpl
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service
 class CreateNewCommentServiceImpl(
     private val findUserAuthenticatedService: FindUserAuthenticatedService,
 
-    private val commentRepository: CommentRepositoryInterface,
+    private val commentRepository: CommentRepository,
 
     private val postFinderByIdImpl: PostFinderByIdImpl
 ) : CreateNewCommentService {

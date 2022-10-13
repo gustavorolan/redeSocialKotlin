@@ -17,7 +17,11 @@ class UserResponseMapper {
         )
     }
 
-    fun toResponseWithPosts(user: UserAccount): UserWithPostsResponse? {
+    fun toResponse(userList: List <UserAccount>): List<UserAccountResponse> {
+       return userList.map {userAccount -> toResponse(userAccount) }
+    }
+
+    fun toResponseWithPosts(user: UserAccount): UserWithPostsResponse {
         return UserWithPostsResponse(
             toResponse(user),
             null

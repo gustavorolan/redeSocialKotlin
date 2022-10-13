@@ -50,5 +50,12 @@ internal class AcceptFriendshipServiceImplTest {
         Mockito.verify(friendshipRepository).save(captor.capture())
 
         Assertions.assertEquals(expected,captor.value.relation)
+
+        Mockito.verifyNoMoreInteractions(
+            findUserAuthenticatedService,
+            userAccountFinderByIdImpl,
+            friendshipRepository,
+            userLoggedCanAcceptFriendshipValidation
+        )
     }
 }

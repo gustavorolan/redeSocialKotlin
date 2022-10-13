@@ -17,6 +17,14 @@ class FriendshipFactory {
                 relation = Relation.NOT_FRIENDS
             )
 
+        fun getFriendShip(userAccount: UserAccount, friend:UserAccount, id:Long): Friendship =
+            Friendship(
+                friendshipId = id,
+                userAccount = userAccount,
+                userFriendShip = friend,
+                relation = Relation.NOT_FRIENDS
+            )
+
         fun getFriendShipRequest(): RequestFriendshipRequest =
             RequestFriendshipRequest(
                friendId = 1L

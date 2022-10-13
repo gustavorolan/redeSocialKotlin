@@ -1,7 +1,7 @@
 package com.api.socialNetwork.service.impl
 
 import com.api.socialNetwork.model.Comment
-import com.api.socialNetwork.repository.CommentRepositoryInterface
+import com.api.socialNetwork.repository.CommentRepository
 import com.api.socialNetwork.security.FindUserAuthenticatedService
 import com.api.socialNetwork.service.finder.impl.PostFinderByIdImpl
 import com.api.socialNetwork.utils.factory.CommentFactory
@@ -19,7 +19,7 @@ internal class CreateNewCommentServiceImplTest {
         .mock(FindUserAuthenticatedService::class.java)
 
     private val commentRepository= Mockito
-        .mock(CommentRepositoryInterface::class.java)
+        .mock(CommentRepository::class.java)
 
     private val postFinderByIdImp = Mockito
         .mock(PostFinderByIdImpl::class.java)

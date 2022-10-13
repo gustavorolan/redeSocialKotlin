@@ -34,5 +34,10 @@ internal class ChangeUserServiceImplTest {
         Mockito.verify(userAccountRepository).save(captor.capture())
 
         Assertions.assertEquals(expected,captor.value)
+
+        Mockito.verifyNoMoreInteractions(
+            findUserAuthenticatedService,
+            userAccountRepository
+        )
     }
 }

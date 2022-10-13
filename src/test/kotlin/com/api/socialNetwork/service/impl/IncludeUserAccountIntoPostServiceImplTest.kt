@@ -62,5 +62,12 @@ internal class IncludeUserAccountIntoPostServiceImplTest {
         Assertions.assertEquals(expected,idList)
         Assertions.assertTrue(userToInclude.postList.contains(post))
         Assertions.assertTrue(post.userAccountList.contains(userToInclude))
+
+        Mockito.verifyNoMoreInteractions(
+            findUserAuthenticatedService,
+            postFinderByIdImpl,
+            postRepository,
+            includeUserAccountIntoPostValidationList
+        )
     }
 }
