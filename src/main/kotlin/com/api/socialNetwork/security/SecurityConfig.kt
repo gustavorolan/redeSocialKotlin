@@ -5,18 +5,18 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
-import org.springframework.security.web.SecurityFilterChain
-import org.springframework.session.web.http.HeaderHttpSessionIdResolver
+import org.springframework.session.web.http.HeaderHttpSessionIdResolver.xAuthToken
 import org.springframework.session.web.http.HttpSessionIdResolver
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
-class SecurityConfig {
+class SecurityConfig : WebSecurityConfigurerAdapter() {
     @Bean
     fun httpSessionIdResolver(): HttpSessionIdResolver {
-        return HeaderHttpSessionIdResolver.xAuthToken()
+        return xAuthToken()
     }
 
     @Bean
@@ -24,19 +24,16 @@ class SecurityConfig {
         return BCryptPasswordEncoder()
     }
 
-    @Bean
-    fun filterChain(http: HttpSecurity) : SecurityFilterChain {
+    @Throws(Exception::class)
+    override fun configure(http: HttpSecurity) {
         http
             .csrf().disable()
             .cors().and()
             .authorizeRequests()
-            .antMatchers(HttpMethod.POST, "/login", "/createNewUser")
+            .antMatchers(HttpMethod.POST, "/user/create")
             .permitAll().and()
             .authorizeRequests()
-            .anyRequest()
-            .authenticated().and()
-            .httpBasic()
-
-        return http.build()
+            .anyRequest().authenticated()
+            .and().httpBasic()
     }
 }
