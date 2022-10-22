@@ -46,7 +46,7 @@ internal class AcceptFriendshipServiceImplTest {
         Mockito.verify(userAccountFinderByIdImpl).findByIdWithException(acceptFriendShipRequest.friendId)
         Mockito.verify(findUserAuthenticatedService).user
         Mockito.verify(friendshipRepository).findFirstFriendshipByUsersIdList(userAccount.userId!!, friendToAdd.userId!!)
-        Mockito.verify(userLoggedCanAcceptFriendshipValidation).validate(friendship)
+        Mockito.verify(userLoggedCanAcceptFriendshipValidation).validate(friendship.userFriendShip.userId!!)
         Mockito.verify(friendshipRepository).save(captor.capture())
 
         Assertions.assertEquals(expected,captor.value.relation)

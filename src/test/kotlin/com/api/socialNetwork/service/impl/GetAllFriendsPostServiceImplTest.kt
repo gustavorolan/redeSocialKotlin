@@ -1,6 +1,5 @@
 package com.api.socialNetwork.service.impl
 
-import com.api.socialNetwork.repository.PostRepository
 import com.api.socialNetwork.security.FindUserAuthenticatedService
 import com.api.socialNetwork.service.GetFriendsService
 import com.api.socialNetwork.utils.factory.PostFactory
@@ -17,18 +16,13 @@ internal class GetAllFriendsPostServiceImplTest {
     private  val getFriendsService = Mockito
         .mock(GetFriendsService::class.java)
 
-    private val postRepository = Mockito
-        .mock(PostRepository::class.java)
-
     private val  getAllFriendsPostServiceImpl=GetAllFriendsPostServiceImpl(
         findUserAuthenticatedService,
         getFriendsService,
-        postRepository
     )
 
     @Test
     fun getTest() {
-
         val firstUser = UserAccountFactory.getUserAccount(1L)
         val secondUser = UserAccountFactory.getUserAccount(2L)
         val thirdUser = UserAccountFactory.getUserAccount(3L)
@@ -67,15 +61,16 @@ internal class GetAllFriendsPostServiceImplTest {
             fourthUser
         )
 
-        val expected = listOf(
-            firstUserFirstPost,
-            firstUserSecondPost,
-            secondUserFirstPost,
-            secondUserSecondPost,
-            thirdUserFirstPost,
-            thirdUserSecondPost,
-            fourthUserFirstPost,
-            fourthUserSecondPost
+
+        val  expected = listOf(
+            firstUserFirstPost.postId!!,
+            firstUserSecondPost.postId!!,
+            secondUserFirstPost.postId!!,
+            secondUserSecondPost.postId!!,
+            thirdUserFirstPost.postId!!,
+            thirdUserSecondPost.postId!!,
+            fourthUserFirstPost.postId!!,
+            fourthUserSecondPost.postId!!
         )
 
         Mockito.`when`(findUserAuthenticatedService.user).thenReturn(firstUser)
@@ -83,7 +78,7 @@ internal class GetAllFriendsPostServiceImplTest {
 
         val result = getAllFriendsPostServiceImpl.get(0)
 
-        Assertions.assertEquals(expected,result.content)
+        Assertions.assertEquals(expected,result)
 
     }
 }
