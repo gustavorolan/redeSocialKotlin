@@ -28,7 +28,7 @@ class SearchController(
         return ResponseEntity.ok(userAccountResponse)
     }
 
-    @GetMapping("/NameOrEmail/user")
+    @PostMapping("/nameOrEmail/user")
     fun search(@RequestBody request: SearchNameEmailRequest): ResponseEntity<List<UserAccountResponse>> {
         val userAccountResponse =  searchNameEmailService.search(request)
         return ResponseEntity.ok(userAccountResponse)

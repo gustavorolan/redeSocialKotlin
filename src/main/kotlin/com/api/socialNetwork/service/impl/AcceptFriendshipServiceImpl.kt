@@ -7,7 +7,7 @@ import com.api.socialNetwork.repository.FriendshipRepository
 import com.api.socialNetwork.security.FindUserAuthenticatedService
 import com.api.socialNetwork.service.AcceptFriendshipService
 import com.api.socialNetwork.service.finder.impl.UserAccountFinderByIdImpl
-import com.api.socialNetwork.service.validator.UserLoggedCanAcceptFriendshipValidation
+import com.api.socialNetwork.service.validator.AcceptFriendshipValidation.UserLoggedCanAcceptFriendshipValidation
 import org.springframework.stereotype.Service
 
 @Service

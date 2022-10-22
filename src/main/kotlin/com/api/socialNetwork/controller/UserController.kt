@@ -7,6 +7,7 @@ import com.api.socialNetwork.controller.dtos.request.UndoFriendshipRequest
 import com.api.socialNetwork.controller.dtos.response.PostResponse
 import com.api.socialNetwork.controller.dtos.response.UserAccountResponse
 import com.api.socialNetwork.service.*
+import org.springframework.data.domain.Page
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
@@ -47,9 +48,9 @@ class UserController(
         return ResponseEntity.ok(friendsResponse);
     }
 
-    @GetMapping("/getPostFriends")
-    fun getAll(): ResponseEntity<List<PostResponse>> {
-        val allFriendsPosts: List<PostResponse> = getAllFriendsPostResponseService.get()
+    @GetMapping("/getPostsFromFriends/{page}")
+    fun getAll(@PathVariable page: String): ResponseEntity<Page<PostResponse>> {
+        val allFriendsPosts: Page<PostResponse> = getAllFriendsPostResponseService.get(page.toInt())
         return ResponseEntity.ok(allFriendsPosts)
     }
 

@@ -5,7 +5,7 @@ import com.api.socialNetwork.model.Relation
 import com.api.socialNetwork.repository.FriendshipRepository
 import com.api.socialNetwork.security.FindUserAuthenticatedService
 import com.api.socialNetwork.service.finder.impl.UserAccountFinderByIdImpl
-import com.api.socialNetwork.service.validator.UserLoggedCanAcceptFriendshipValidation
+import com.api.socialNetwork.service.validator.AcceptFriendshipValidation.UserLoggedCanAcceptFriendshipValidation
 import com.api.socialNetwork.utils.factory.FriendshipFactory
 import com.api.socialNetwork.utils.factory.UserAccountFactory
 import org.junit.jupiter.api.Assertions
