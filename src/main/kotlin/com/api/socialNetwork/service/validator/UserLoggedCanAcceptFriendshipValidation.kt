@@ -1,5 +1,5 @@
 package com.api.socialNetwork.service.validator
 
 interface UserLoggedCanAcceptFriendshipValidation {
-    fun validate(objectToBeValidated:Any)
+    fun validate(objectToBeValidated: Long)
 }

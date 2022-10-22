@@ -22,17 +22,18 @@ class GetUserWithPostsByNicknameServiceImpl(
         val user = findUserAuthenticatedService.user
         val personSearched = userAccountRepository.findByNickname(nickname)
         val friendship = friendshipRepository.filterFriendsByUsersId(user.userId!!, personSearched.userId!!)
-        val postList:MutableList<PostWithUserResponse> = mutableListOf()
+        val postWithUser: MutableList<PostWithUserResponse> = mutableListOf()
 
-        if (friendship.isEmpty()){
-            personSearched.postList.filter{ !it.privatePost }.forEach {postListMapper.toResponse(it) }
-        }else{
-            personSearched.postList.forEach {postListMapper.toResponse(it) }
+
+        if (friendship.isEmpty()) {
+            personSearched.postList.filter { !it.privatePost }.forEach { postWithUser.add(postListMapper.postWithoutUserToResponse(it)) }
+        } else {
+            personSearched.postList.forEach { postWithUser.add(postListMapper.postWithoutUserToResponse(it)) }
         }
 
 
         val toResponseWithPosts = userResponseMapper.toResponseWithPosts(personSearched)
-        toResponseWithPosts.postResponseList = postList
+        toResponseWithPosts.postResponseList = postWithUser
 
         return toResponseWithPosts
     }

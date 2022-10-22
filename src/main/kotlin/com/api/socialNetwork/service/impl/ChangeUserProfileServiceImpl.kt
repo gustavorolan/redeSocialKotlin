@@ -4,14 +4,14 @@ import com.api.socialNetwork.controller.dtos.request.ChangeUserRequest
 import com.api.socialNetwork.model.UserAccount
 import com.api.socialNetwork.repository.UserAccountRepository
 import com.api.socialNetwork.security.FindUserAuthenticatedService
-import com.api.socialNetwork.service.ChangeUserService
+import com.api.socialNetwork.service.ChangeUserProfileService
 import org.springframework.stereotype.Service
 
 @Service
-class ChangeUserServiceImpl(
+class ChangeUserProfileServiceImpl(
     private val findUserAuthenticatedService: FindUserAuthenticatedService,
     private val userAccountRepository: UserAccountRepository
-) : ChangeUserService {
+) : ChangeUserProfileService {
     override fun change(request: ChangeUserRequest) {
         val user: UserAccount = findUserAuthenticatedService.user
 

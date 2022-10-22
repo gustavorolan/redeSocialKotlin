@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service
 class UserLoggedCanAcceptFriendshipUserLoggedCanAcceptFriendshipValidationImpl(
     private val findUserAuthenticatedService: FindUserAuthenticatedService
 ) : UserLoggedCanAcceptFriendshipValidation {
-    override fun validate(objectToBeValidated: Any) {
+    override fun validate(objectToBeValidated: Long) {
         val userLogged = findUserAuthenticatedService.user
-        val friendUserId = objectToBeValidated as Long
+        val friendUserId = objectToBeValidated
         if(userLogged.userId!! != friendUserId) throw UserLoggedCanAcceptFriendshipException()
     }
 }

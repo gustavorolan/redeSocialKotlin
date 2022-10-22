@@ -9,13 +9,13 @@ import org.junit.jupiter.api.Test
 import org.mockito.ArgumentCaptor
 import org.mockito.Mockito
 
-internal class ChangeUserServiceImplTest {
+internal class ChangeUserProfileServiceImplTest {
     private val findUserAuthenticatedService = Mockito.mock(FindUserAuthenticatedService::class.java)
     private val userAccountRepository = Mockito.mock(UserAccountRepository::class.java)
 
     private val captor = ArgumentCaptor.forClass(UserAccount::class.java)
 
-    private val changeUserServiceImpl = ChangeUserServiceImpl(
+    private val changeUserServiceImpl = ChangeUserProfileServiceImpl(
         findUserAuthenticatedService,
         userAccountRepository
     )

@@ -22,7 +22,7 @@ class AcceptFriendshipServiceImpl(
         val userToAdd = userAccountFinderByIdImpl.findByIdWithException(request.friendId) as UserAccount
         val friendship = friendshipRepository.findFirstFriendshipByUsersIdList(user.userId!!, userToAdd.userId!!)
 
-        userLoggedCanAcceptFriendshipValidation.validate(friendship)
+        userLoggedCanAcceptFriendshipValidation.validate(friendship.userFriendShip.userId!!)
 
         friendship.relation = Relation.FRIENDS
 

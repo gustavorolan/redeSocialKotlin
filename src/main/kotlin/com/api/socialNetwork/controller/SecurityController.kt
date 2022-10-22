@@ -10,13 +10,17 @@ import org.springframework.web.bind.annotation.RestController
 import javax.validation.Valid
 
 @RestController
-@RequestMapping("/createNewUser")
-class CreateNewUserController(
+@RequestMapping
+class SecurityController(
     private val createNewUserService: CreateNewUserService
     ) {
-    @PostMapping
+    @PostMapping("/createNewUser")
     fun create(@RequestBody request: @Valid CreateNewUserRequest): ResponseEntity<String> {
         val username = createNewUserService.create(request)
         return ResponseEntity.ok("You created an account with username: $username")
+    }
+
+    @PostMapping("/login")
+    fun login() {
     }
 }

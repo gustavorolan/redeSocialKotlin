@@ -53,4 +53,8 @@ data class  UserAccount(
                 commentList = mutableListOf(),
                 permissionList = mutableListOf())
 
+    override fun toString(): String {
+        return "UserAccount(userId=$userId, username='$username', nickname='$nickname', email='$email', password='$password', profileImg=$profileImg, postList=$postList, permissionList=$permissionList)"
+    }
+
 }

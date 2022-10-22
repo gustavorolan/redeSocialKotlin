@@ -22,8 +22,10 @@ class SearchNameEmailServiceImpl(
 
     override fun search(request: SearchNameEmailRequest): List<UserAccountResponse> {
         val user: UserAccount = findUserAuthenticatedService.user
+
         val usersListFilteredByName = userAccountRepository
-            .filterAllPeopleEmailName(request.search!!, user.userId!!)
+            .filterAllPeopleEmailName(request.search, user.userId!!)
+
         val friendships = friendshipRepository
             .filterFriendsWithoutRelationByUser(user.userId!!)
         val userFriends: MutableList<UserAccount> = ArrayList()
