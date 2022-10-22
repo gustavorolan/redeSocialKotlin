@@ -3,12 +3,16 @@ package com.api.socialNetwork.service.impl
 import com.api.socialNetwork.controller.dtos.request.SearchNameEmailRequest
 import com.api.socialNetwork.controller.dtos.response.UserAccountResponse
 import com.api.socialNetwork.mapper.UserResponseMapper
-import com.api.socialNetwork.model.Friendship
+import com.api.socialNetwork.model.Environment
+import com.api.socialNetwork.model.Relation
 import com.api.socialNetwork.model.UserAccount
 import com.api.socialNetwork.repository.FriendshipRepository
 import com.api.socialNetwork.repository.UserAccountRepository
 import com.api.socialNetwork.security.FindUserAuthenticatedService
 import com.api.socialNetwork.service.SearchNameEmailService
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 
 
@@ -20,23 +24,26 @@ class SearchNameEmailServiceImpl(
     private val userResponseMapper: UserResponseMapper,
 ) : SearchNameEmailService {
 
-    override fun search(request: SearchNameEmailRequest): List<UserAccountResponse> {
+    override fun search(request: SearchNameEmailRequest): Page<UserAccountResponse> {
+        val pageable: Pageable = PageRequest.of(request.page,Environment.PAGEABLE.numberOfContents)
+
         val user: UserAccount = findUserAuthenticatedService.user
 
-        val usersListFilteredByName = userAccountRepository
-            .filterAllPeopleEmailName(request.search, user.userId!!)
+        val friendshipsFromUser = friendshipRepository
+            .filterFriendsByUser(user.userId!!, Relation.FRIENDS);
 
-        val friendships = friendshipRepository
-            .filterFriendsWithoutRelationByUser(user.userId!!)
-        val userFriends: MutableList<UserAccount> = ArrayList()
-        friendships.stream().map(Friendship::userAccount)
-            .filter { userAccount -> userAccount !== user }
-            .forEach { userAccount -> userFriends.add(userAccount) }
-        friendships.stream().map { friendship: Friendship -> friendship.userFriendShip }
-            .filter { userAccount -> userAccount !== user }
-            .forEach { userAccount -> userFriends.add(userAccount) }
-        return usersListFilteredByName
-            .filter { userAccount: UserAccount -> userFriends.contains(userAccount) }
-            .map { userAccount: UserAccount -> userResponseMapper.toResponse(userAccount) }
+        val friendsIdsFromUser = mutableListOf<Long>()
+
+        friendshipsFromUser.forEach { friendship ->
+            if(!friendsIdsFromUser.contains(friendship.userFriendShip.userId))
+                friendsIdsFromUser.add(friendship.userFriendShip.userId!!)
+            if(!friendsIdsFromUser.contains(friendship.userAccount.userId))
+                friendsIdsFromUser.add(friendship.userAccount.userId!!)
+        }
+
+        val filterAllPeopleEmailName = userAccountRepository
+            .filterAllPeopleEmailName(request.search!!, friendsIdsFromUser,pageable)
+
+        return filterAllPeopleEmailName.map { userResponseMapper.toResponse(it) }
     }
 }

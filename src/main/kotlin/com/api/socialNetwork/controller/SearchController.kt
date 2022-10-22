@@ -6,6 +6,7 @@ import com.api.socialNetwork.controller.dtos.response.UserWithPostsResponse
 import com.api.socialNetwork.service.GetUserByNicknameService
 import com.api.socialNetwork.service.GetUserWithPostsByNicknameService
 import com.api.socialNetwork.service.SearchNameEmailService
+import org.springframework.data.domain.Page
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -29,7 +30,7 @@ class SearchController(
     }
 
     @PostMapping("/nameOrEmail/user")
-    fun search(@RequestBody request: SearchNameEmailRequest): ResponseEntity<List<UserAccountResponse>> {
+    fun search(@RequestBody request: SearchNameEmailRequest): ResponseEntity<Page<UserAccountResponse>> {
         val userAccountResponse =  searchNameEmailService.search(request)
         return ResponseEntity.ok(userAccountResponse)
     }

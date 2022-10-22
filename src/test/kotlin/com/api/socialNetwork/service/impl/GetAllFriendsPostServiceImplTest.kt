@@ -1,5 +1,6 @@
 package com.api.socialNetwork.service.impl
 
+import com.api.socialNetwork.repository.PostRepository
 import com.api.socialNetwork.security.FindUserAuthenticatedService
 import com.api.socialNetwork.service.GetFriendsService
 import com.api.socialNetwork.utils.factory.PostFactory
@@ -16,10 +17,13 @@ internal class GetAllFriendsPostServiceImplTest {
     private  val getFriendsService = Mockito
         .mock(GetFriendsService::class.java)
 
+    private val postRepository = Mockito
+        .mock(PostRepository::class.java)
 
     private val  getAllFriendsPostServiceImpl=GetAllFriendsPostServiceImpl(
         findUserAuthenticatedService,
-        getFriendsService
+        getFriendsService,
+        postRepository
     )
 
     @Test
@@ -77,10 +81,9 @@ internal class GetAllFriendsPostServiceImplTest {
         Mockito.`when`(findUserAuthenticatedService.user).thenReturn(firstUser)
         Mockito.`when`(getFriendsService.get()).thenReturn(friendshipList)
 
-        val result = getAllFriendsPostServiceImpl.get()
+        val result = getAllFriendsPostServiceImpl.get(0)
 
-        Assertions.assertEquals(expected,result)
+        Assertions.assertEquals(expected,result.content)
 
-        println(result)
     }
 }

@@ -48,7 +48,7 @@
 					"response": []
 				},
 				{
-					"name": "getPostFriends",
+					"name": "getAllPostFriends",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -81,7 +81,7 @@
 								"type": "text"
 							}
 						],
-						"url": "{{URL}}/user/getPostFriends"
+						"url": "{{URL}}/user/getPostsFromFriends/0"
 					},
 					"response": []
 				},
@@ -255,6 +255,53 @@
 						"url": "{{URL}}/user/me"
 					},
 					"response": []
+				},
+				{
+					"name": "undoFriendship",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idToUndoFriendShip\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{URL}}/user/undoFriendship"
+					},
+					"response": []
 				}
 			]
 		},
@@ -286,7 +333,7 @@
 					"response": []
 				},
 				{
-					"name": "includeNewUser",
+					"name": "includeNewUserOnPost",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -298,7 +345,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idPost\":1\r\n}",
+							"raw": "{\r\n    \"idPost\":2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -417,10 +464,7 @@
 			"name": "search",
 			"item": [
 				{
-					"name": "getProfilesByNickname",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "getProfilesByNicknameWithPosts",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -430,26 +474,14 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"postText\":\"newPost\",\r\n    \"PostImg\":\"\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": "{{URL}}/search/asdsads/posts"
 					},
 					"response": []
 				},
 				{
 					"name": "searchByEmail",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
 								"key": "X-Auth-Token",
@@ -459,19 +491,19 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"search\": \"gustavo\" \r\n}",
+							"raw": "{\r\n    \"search\": \"gus\", \r\n    \"page\":0\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{URL}}/search/NameOrEmail/user"
+						"url": "{{URL}}/search/nameOrEmail/user"
 					},
 					"response": []
 				},
 				{
-					"name": "GetUserByNicknameWithPosts",
+					"name": "GetUserByNickname",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
