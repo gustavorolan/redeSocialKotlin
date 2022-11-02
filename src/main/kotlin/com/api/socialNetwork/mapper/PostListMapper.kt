@@ -14,7 +14,7 @@ class PostListMapper(private val userResponseMapper: UserResponseMapper) {
         val userAccountResponseList: List<UserAccountResponse> = userAccountResponses(post)
 
         return PostResponse(
-            postId = post.postId!!,
+            postId = post.id!!,
             userAccountResponse = userAccountResponseList,
             postText = post.postText,
             postImg = post.postImg!!,
@@ -29,7 +29,7 @@ class PostListMapper(private val userResponseMapper: UserResponseMapper) {
         val userAccountResponseList: List<UserAccountResponse> = userAccountResponses(post)
 
         return PostWithUserResponse(
-            postId = post.postId!!,
+            postId = post.id!!,
             postText = post.postText,
             postImg = post.postImg!!,
             likes = post.likes,

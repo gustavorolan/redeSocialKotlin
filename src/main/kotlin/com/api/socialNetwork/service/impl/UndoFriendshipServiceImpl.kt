@@ -18,7 +18,7 @@ class UndoFriendshipServiceImpl(
     override fun undo(request: UndoFriendshipRequest) {
         val user = findUserAuthenticatedService.user
         val userToAdd = userAccountFinderByIdImpl.findByIdWithException(request.idToUndoFriendShip) as UserAccount
-        val friendship = friendshipRepository.findFirstFriendshipByUsersIdList(user.userId!!, userToAdd.userId!!)
+        val friendship = friendshipRepository.findFirstFriendshipByUsersIdList(user.id!!, userToAdd.id!!)
         friendship.relation = Relation.BLOCKED
         friendshipRepository.save(friendship)
     }

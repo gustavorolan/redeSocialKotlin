@@ -30,15 +30,15 @@ class SearchNameEmailServiceImpl(
         val user: UserAccount = findUserAuthenticatedService.user
 
         val friendshipsFromUser = friendshipRepository
-            .filterFriendsByUser(user.userId!!, Relation.FRIENDS);
+            .filterFriendsByUser(user.id!!, Relation.FRIENDS)
 
         val friendsIdsFromUser = mutableListOf<Long>()
 
         friendshipsFromUser.forEach { friendship ->
-            if(!friendsIdsFromUser.contains(friendship.userFriendShip.userId))
-                friendsIdsFromUser.add(friendship.userFriendShip.userId!!)
-            if(!friendsIdsFromUser.contains(friendship.userAccount.userId))
-                friendsIdsFromUser.add(friendship.userAccount.userId!!)
+            if(!friendsIdsFromUser.contains(friendship.userFriendShip.id))
+                friendsIdsFromUser.add(friendship.userFriendShip.id!!)
+            if(!friendsIdsFromUser.contains(friendship.userAccount.id))
+                friendsIdsFromUser.add(friendship.userAccount.id!!)
         }
 
         val filterAllPeopleEmailName = userAccountRepository

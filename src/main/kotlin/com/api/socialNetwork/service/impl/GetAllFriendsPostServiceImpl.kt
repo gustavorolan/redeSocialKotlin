@@ -18,12 +18,12 @@ class GetAllFriendsPostServiceImpl(
         val postList = mutableListOf<Long>()
 
         user.postList.forEach {
-            postList.add(it.postId!!)
+            postList.add(it.id!!)
         }
 
         friends.forEach{friend->
             friend.postList.forEach{post: Post ->
-                postList.add(post.postId!!)}
+                postList.add(post.id!!)}
         }
 
         return postList

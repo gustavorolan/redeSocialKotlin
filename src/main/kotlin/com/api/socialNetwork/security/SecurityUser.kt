@@ -14,7 +14,7 @@ class SecurityUser(user: UserAccount) : UserDetails {
     private val permissions: List<SimpleGrantedAuthority>
 
     init {
-        id = user.userId!!
+        id = user.id!!
         email = user.email
         password = user.password
         permissions = user.permissionList

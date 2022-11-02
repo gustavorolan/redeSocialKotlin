@@ -49,12 +49,12 @@ internal class GetFriendsServiceImplTest {
         )
 
         Mockito.`when`(findUserAuthenticatedService.user).thenReturn(firstUser)
-        Mockito.`when`(friendshipRepository.filterFriendsByUser(firstUser.userId!!, Relation.FRIENDS)).thenReturn(friendshipList)
+        Mockito.`when`(friendshipRepository.filterFriendsByUser(firstUser.id!!, Relation.FRIENDS)).thenReturn(friendshipList)
 
         val result = getFriendsService.get()
 
         Mockito.verify(findUserAuthenticatedService).user
-        Mockito.verify(friendshipRepository).filterFriendsByUser(firstUser.userId!!, Relation.FRIENDS)
+        Mockito.verify(friendshipRepository).filterFriendsByUser(firstUser.id!!, Relation.FRIENDS)
 
         Assertions.assertEquals(expected, result)
 

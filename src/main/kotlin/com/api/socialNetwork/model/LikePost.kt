@@ -5,8 +5,10 @@ import javax.persistence.*
 @Suppress("com.haulmont.jpb.DataClassEqualsAndHashCodeInspection")
 @Entity
 data class LikePost(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var likeId: Long? = null,
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "likeId")
+    var id: Long? = null,
 
     @ManyToOne(cascade = [CascadeType.PERSIST])
     @JoinColumn(name = "userId")
@@ -20,7 +22,7 @@ data class LikePost(
         userAccount: UserAccount,
         postLiked: Post
     ):this(
-       likeId = null,
+       id = null,
        userAccount =  userAccount,
        postLiked =  postLiked
     )

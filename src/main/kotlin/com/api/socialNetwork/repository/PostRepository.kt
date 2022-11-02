@@ -9,11 +9,9 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface PostRepository : JpaRepository<Post, Long> {
-    @Query("select p from Post p where p.postId in ?1 order by p.dateTime desc")
+    @Query("select p from Post p where p.id in ?1 order by p.dateTime desc")
     fun findFriendsPosts(postList: List<Long>, pageable: Pageable): Page<Post>
 
-    @Query("select p from Post p where p.postId in ?1 order by p.dateTime desc")
+    @Query("select p from Post p where p.id in ?1 order by p.dateTime desc")
     fun findFriendsPostsList(postList: List<Long>): List<Post>
-    // @Query("select p from Post p where p.userAccountList.userId in ?1")
-   // fun findAllByUserAccountInUserAccountList(userAccountList: List<Long>): List<Post>
 }

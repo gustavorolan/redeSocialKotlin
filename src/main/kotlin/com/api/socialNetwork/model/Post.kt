@@ -8,8 +8,10 @@ import javax.persistence.*
 @Suppress("com.haulmont.jpb.DataClassEqualsAndHashCodeInspection")
 @Entity
 data class Post(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var postId: Long? = null,
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "postId")
+    var id: Long? = null,
 
     @ManyToMany(cascade = [CascadeType.ALL])
     @JoinTable(
@@ -50,7 +52,7 @@ data class Post(
         dateTime: LocalDateTime,
 
     ):this(
-        postId = null,
+        id = null,
        userAccountList = mutableListOf(userAccount),
        commentList =  mutableListOf(),
        likePostList = mutableListOf(),
@@ -64,6 +66,6 @@ data class Post(
 
     @Override
     override fun toString(): String {
-        return this::class.simpleName + "(postId = $postId , privatePost = $privatePost , postText = $postText , postImg = $postImg , dateTime = $dateTime , likes = $likes , comments = $comments )"
+        return this::class.simpleName + "(postId = $id , privatePost = $privatePost , postText = $postText , postImg = $postImg , dateTime = $dateTime , likes = $likes , comments = $comments )"
     }
 }

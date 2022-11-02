@@ -12,6 +12,6 @@ class UserLoggedCanAcceptFriendshipUserLoggedCanAcceptFriendshipValidationImpl(
     override fun validate(objectToBeValidated: Any) {
         val userLogged = findUserAuthenticatedService.user
         val friendUserId = objectToBeValidated as Long
-        if(userLogged.userId!! != friendUserId) throw UserLoggedCanAcceptFriendshipException()
+        if(userLogged.id!! != friendUserId) throw UserLoggedCanAcceptFriendshipException()
     }
 }

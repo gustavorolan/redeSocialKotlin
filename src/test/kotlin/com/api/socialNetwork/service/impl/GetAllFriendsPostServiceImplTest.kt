@@ -63,14 +63,14 @@ internal class GetAllFriendsPostServiceImplTest {
 
 
         val  expected = listOf(
-            firstUserFirstPost.postId!!,
-            firstUserSecondPost.postId!!,
-            secondUserFirstPost.postId!!,
-            secondUserSecondPost.postId!!,
-            thirdUserFirstPost.postId!!,
-            thirdUserSecondPost.postId!!,
-            fourthUserFirstPost.postId!!,
-            fourthUserSecondPost.postId!!
+            firstUserFirstPost.id!!,
+            firstUserSecondPost.id!!,
+            secondUserFirstPost.id!!,
+            secondUserSecondPost.id!!,
+            thirdUserFirstPost.id!!,
+            thirdUserSecondPost.id!!,
+            fourthUserFirstPost.id!!,
+            fourthUserSecondPost.id!!
         )
 
         Mockito.`when`(findUserAuthenticatedService.user).thenReturn(firstUser)

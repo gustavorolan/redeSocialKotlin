@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface CommentRepository : JpaRepository<Comment, Long> {
-    @Query("select c from Comment c where c.postCommented.postId=?1")
+    @Query("select c from Comment c where c.postCommented.id=?1")
     fun findAllPostComments(postId: Long): List<Comment>
 }

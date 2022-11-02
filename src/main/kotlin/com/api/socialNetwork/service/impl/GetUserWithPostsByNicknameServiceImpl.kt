@@ -21,7 +21,7 @@ class GetUserWithPostsByNicknameServiceImpl(
     override fun get(nickname: String): UserWithPostsResponse {
         val user = findUserAuthenticatedService.user
         val personSearched = userAccountRepository.findByNickname(nickname)
-        val friendship = friendshipRepository.filterFriendsByUsersId(user.userId!!, personSearched.userId!!)
+        val friendship = friendshipRepository.filterFriendsByUsersId(user.id!!, personSearched.id!!)
         val postWithUser: MutableList<PostWithUserResponse> = mutableListOf()
 
 

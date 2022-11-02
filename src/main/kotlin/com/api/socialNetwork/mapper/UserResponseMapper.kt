@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component
 class UserResponseMapper {
     fun toResponse(user: UserAccount): UserAccountResponse {
         return UserAccountResponse(
-            user.userId!!,
+            user.id!!,
             user.username,
             user.nickname,
             user.profileImg,

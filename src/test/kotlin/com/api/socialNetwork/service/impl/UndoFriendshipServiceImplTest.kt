@@ -36,13 +36,13 @@ internal class UndoFriendshipServiceImplTest {
         val expected = Relation.BLOCKED
         Mockito.`when`(userAccountFinderByIdImpl.findByIdWithException(undoFriendshipRequest.idToUndoFriendShip)).thenReturn(friendToAdd)
         Mockito.`when`(findUserAuthenticatedService.user).thenReturn(userAccount)
-        Mockito.`when`(friendshipRepository.findFirstFriendshipByUsersIdList(userAccount.userId!!, friendToAdd.userId!!)).thenReturn(friendship)
+        Mockito.`when`(friendshipRepository.findFirstFriendshipByUsersIdList(userAccount.id!!, friendToAdd.id!!)).thenReturn(friendship)
 
         undoFriendshipServiceImpl.undo(undoFriendshipRequest)
 
         Mockito.verify(userAccountFinderByIdImpl).findByIdWithException(undoFriendshipRequest.idToUndoFriendShip)
         Mockito.verify(findUserAuthenticatedService).user
-        Mockito.verify(friendshipRepository).findFirstFriendshipByUsersIdList(userAccount.userId!!, friendToAdd.userId!!)
+        Mockito.verify(friendshipRepository).findFirstFriendshipByUsersIdList(userAccount.id!!, friendToAdd.id!!)
         Mockito.verify(friendshipRepository).save(captor.capture())
 
         Assertions.assertEquals(expected,captor.value.relation)

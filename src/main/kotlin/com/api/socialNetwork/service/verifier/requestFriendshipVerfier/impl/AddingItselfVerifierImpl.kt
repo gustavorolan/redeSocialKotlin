@@ -12,7 +12,7 @@ class AddingItselfVerifierImpl(
 ) : RequestFriendshipVerifier {
     override fun verify(request: Any) {
         val acceptFriendshipRequest = request as RequestFriendshipRequest
-        if(findUserAuthenticatedService.user.userId == acceptFriendshipRequest.friendId)
+        if(findUserAuthenticatedService.user.id == acceptFriendshipRequest.friendId)
             throw AddingItselfException()
     }
 }

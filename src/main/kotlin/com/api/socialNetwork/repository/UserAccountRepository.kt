@@ -14,6 +14,6 @@ interface UserAccountRepository : JpaRepository<UserAccount, Long> {
     fun findByNickname(nickname: String?): UserAccount
 
     @Query("select u from UserAccount u where (u.username like %?1% or u.email " +
-            "like %?1% or u.nickname like %?1%) and u.userId not in ?2")
+            "like %?1% or u.nickname like %?1%) and u.id not in ?2")
     fun filterAllPeopleEmailName(nameOrEmail: String, friendsIdsFromUser: List<Long>, pageable: Pageable): Page<UserAccount>
 }

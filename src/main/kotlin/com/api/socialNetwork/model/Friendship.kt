@@ -7,7 +7,8 @@ import javax.persistence.*
 data class Friendship(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var friendshipId: Long? = null,
+    @Column(name = "friendshipId")
+    var id: Long? = null,
 
     @ManyToOne(cascade = [CascadeType.ALL])
     @JoinColumn(referencedColumnName = "userId")
@@ -26,7 +27,7 @@ data class Friendship(
         userFriendShip: UserAccount,
         relation: Relation
     ) :this(
-        friendshipId = null,
+        id = null,
         userAccount = userAccount,
         userFriendShip = userFriendShip,
         relation = relation

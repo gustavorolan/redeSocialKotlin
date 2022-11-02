@@ -25,7 +25,7 @@ class PostFactory {
                 dateTime = DateTimeFactory.getDateTime()
             )
 
-            post.postId=id
+            post.id=id
 
             return post
         }

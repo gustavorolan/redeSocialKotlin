@@ -39,14 +39,14 @@ internal class AcceptFriendshipServiceImplTest {
         val expected = Relation.FRIENDS
         Mockito.`when`(userAccountFinderByIdImpl.findByIdWithException(acceptFriendShipRequest.friendId)).thenReturn(friendToAdd)
         Mockito.`when`(findUserAuthenticatedService.user).thenReturn(userAccount)
-        Mockito.`when`(friendshipRepository.findFirstFriendshipByUsersIdList(userAccount.userId!!, friendToAdd.userId!!)).thenReturn(friendship)
+        Mockito.`when`(friendshipRepository.findFirstFriendshipByUsersIdList(userAccount.id!!, friendToAdd.id!!)).thenReturn(friendship)
 
         acceptFriendshipService.accept(acceptFriendShipRequest)
 
         Mockito.verify(userAccountFinderByIdImpl).findByIdWithException(acceptFriendShipRequest.friendId)
         Mockito.verify(findUserAuthenticatedService).user
-        Mockito.verify(friendshipRepository).findFirstFriendshipByUsersIdList(userAccount.userId!!, friendToAdd.userId!!)
-        Mockito.verify(userLoggedCanAcceptFriendshipValidation).validate(friendship.userFriendShip.userId!!)
+        Mockito.verify(friendshipRepository).findFirstFriendshipByUsersIdList(userAccount.id!!, friendToAdd.id!!)
+        Mockito.verify(userLoggedCanAcceptFriendshipValidation).validate(friendship.userFriendShip.id!!)
         Mockito.verify(friendshipRepository).save(captor.capture())
 
         Assertions.assertEquals(expected,captor.value.relation)

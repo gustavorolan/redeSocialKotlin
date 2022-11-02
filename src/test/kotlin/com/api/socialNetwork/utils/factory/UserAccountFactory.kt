@@ -10,7 +10,7 @@ class UserAccountFactory {
     companion object {
         fun getUserAccount(): UserAccount =
             UserAccount(
-                userId = null,
+                id = null,
                 username = "gustavo",
                 nickname = "gus",
                 email = "user@email.com",
@@ -23,7 +23,7 @@ class UserAccountFactory {
 
          fun getUserAccount(username:String, nickname:String, profileImg:String): UserAccount =
             UserAccount(
-                userId = null,
+                id = null,
                 username = username,
                 nickname = nickname,
                 email = "user@email.com",
@@ -36,7 +36,7 @@ class UserAccountFactory {
 
         fun getUserAccount(userId: Long): UserAccount =
             UserAccount(
-                userId = userId,
+                id = userId,
                 username = "gustavo",
                 nickname = "gus",
                 email = "user@email.com",

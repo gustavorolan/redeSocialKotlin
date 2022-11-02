@@ -17,7 +17,7 @@ class GetAllRequestFriendsServiceImpl(
 ) : GetAllRequestFriendsService {
     override fun get(): List<UserAccountResponse> {
         val user = userAuthenticatedService.user
-        val peopleNotFriend = friendshipRepository.filterFriendsByUser(user.userId!!, Relation.NOT_FRIENDS)
+        val peopleNotFriend = friendshipRepository.filterFriendsByUser(user.id!!, Relation.NOT_FRIENDS)
         val requestUserAccountsStream  = peopleNotFriend.stream().map { person -> person.userAccount }
         val userAccountsWithoutUser = requestUserAccountsStream.filter { userAccount -> userAccount != user }
         val userAccountsRequestResponse = userAccountsWithoutUser.map { requestUser -> userResponseMapper.toResponse(requestUser) }

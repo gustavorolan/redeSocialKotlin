@@ -19,7 +19,7 @@ class FriendshipFactory {
 
         fun getFriendShip(userAccount: UserAccount, friend:UserAccount, id:Long): Friendship =
             Friendship(
-                friendshipId = id,
+                id = id,
                 userAccount = userAccount,
                 userFriendShip = friend,
                 relation = Relation.NOT_FRIENDS

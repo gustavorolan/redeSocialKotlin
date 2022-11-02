@@ -6,7 +6,8 @@ import javax.persistence.*
 data class Comment (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val commentId: Long? = null,
+    @Column(name = "commentId")
+    val id: Long? = null,
 
     @ManyToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "userId")

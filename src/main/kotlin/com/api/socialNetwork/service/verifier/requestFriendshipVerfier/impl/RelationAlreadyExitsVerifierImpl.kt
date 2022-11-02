@@ -13,7 +13,7 @@ class RelationAlreadyExitsVerifierImpl(
     private val friendshipRepository: FriendshipRepository
 ) : RequestFriendshipVerifier {
     override fun verify(request: Any) {
-        val userLoggedID = findUserAuthenticatedService.user.userId!!
+        val userLoggedID = findUserAuthenticatedService.user.id!!
         val acceptFriendshipRequest = request as RequestFriendshipRequest
 
         val friendshipList = friendshipRepository

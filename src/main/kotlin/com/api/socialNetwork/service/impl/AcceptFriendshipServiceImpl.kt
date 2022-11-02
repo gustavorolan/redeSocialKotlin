@@ -20,9 +20,9 @@ class AcceptFriendshipServiceImpl(
     override fun accept(request: AcceptFriendshipRequest) {
         val user = findUserAuthenticatedService.user
         val userToAdd = userAccountFinderByIdImpl.findByIdWithException(request.friendId) as UserAccount
-        val friendship = friendshipRepository.findFirstFriendshipByUsersIdList(user.userId!!, userToAdd.userId!!)
+        val friendship = friendshipRepository.findFirstFriendshipByUsersIdList(user.id!!, userToAdd.id!!)
 
-        userLoggedCanAcceptFriendshipValidation.validate(friendship.userFriendShip.userId!!)
+        userLoggedCanAcceptFriendshipValidation.validate(friendship.userFriendShip.id!!)
 
         friendship.relation = Relation.FRIENDS
 

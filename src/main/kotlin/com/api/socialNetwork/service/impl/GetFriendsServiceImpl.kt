@@ -14,7 +14,7 @@ class GetFriendsServiceImpl(
 ) : GetFriendsService {
     override fun get(): List<UserAccount> {
         val user = findUserAuthenticatedService.user
-        val friendshipsWithBothUsers = friendshipRepository.filterFriendsByUser(user.userId!!, Relation.FRIENDS);
+        val friendshipsWithBothUsers = friendshipRepository.filterFriendsByUser(user.id!!, Relation.FRIENDS)
         val friends : MutableList <UserAccount>  = mutableListOf()
         friendshipsWithBothUsers.forEach{friendship ->
             if (friendship.userAccount != user) friends.add(friendship.userAccount)
